@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="pl">
+   <head>
+      <title>Komis Sam</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="/views/pojazdy/css/style.css">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+   </head>
+   <body style="background-color: #fff">
+      <div id="demo" class="carousel slide" data-ride="carousel">
+         <!-- Indicators -->
+         <ul class="carousel-indicators">
+            <li data-target="#demo" data-slide-to="0" class="active"></li>
+            <li data-target="#demo" data-slide-to="1"></li>
+            <li data-target="#demo" data-slide-to="2"></li>
+         </ul>
+         <!-- The slideshow -->
+         <div class="carousel-inner">
+            <div class="carousel-item active">
+               <img src="/views/pojazdy/img/karuzela_1.jpg" alt="1" width="1100" height="100">
+            </div>
+            <div class="carousel-item">
+               <img src="/views/pojazdy/img/karuzela_2.jpg" alt="2" width="1100" height="500">
+            </div>
+            <div class="carousel-item">
+               <img src="/views/pojazdy/img/karuzela_3.jpg" alt="3" width="1100" height="500">
+            </div>
+         </div>
+         <!-- Left and right controls -->
+         <a class="carousel-control-prev" href="#demo" data-slide="prev">
+         <span class="carousel-control-prev-icon"></span>
+         </a>
+         <a class="carousel-control-next" href="#demo" data-slide="next">
+         <span class="carousel-control-next-icon"></span>
+         </a>
+      </div>
+      </div>
+      <div class="sticky-top">
+         <nav class="navbar navbar-expand-sm bg-dark navbar-dark" style="background-color: #1b1b1b!important">
+            <a class="navbar-brand" href="../../pojazdy/" style="padding: 0px; padding-left: 20px">
+            <img src="/views/pojazdy/img/logo2.png" alt="logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+               <ul class="navbar-nav">
+                  <li class="nav-item menu-button-active">
+                     <a class="nav-link menu-link" href="../../pojazdy/">Pojazdy</a>
+                  </li>
+                  <li class="nav-item menu-button">
+                     <a class="nav-link menu-link" href="../../raporty/">Raporty</a>
+                  </li>
+                  <li class="nav-item menu-button">
+                     <a class="nav-link menu-link" href="#!" data-toggle="modal" data-target="#myModal">Dodaj Pojazd</a>
+                  </li>
+                  <li class="nav-item" style="margin-left: 20px">
+                     <form id="search-bar-form" class="form-inline" action="#">
+                        <div class="input-group">
+                           <div class="input-group-prepend">
+                              <button data-toggle="collapse" data-target="#filers-container" id="search-filter-btn" type="button" class="btn btn-default" data-toggle="dropdown">
+                              <i class="fa fa-arrow-circle-down" aria-hidden="true"></i>
+                              </button>
+                           </div>
+                           <input id="search-bar" class="form-control py-2 border-right-0 border" type="search" placeholder="Szukaj..." id="example-search-input">
+                           <span class="input-group-append">
+                           <button class="btn btn-outline-secondary border-left-0 border" style="background-color: #ff9900; outline: 0!important; border: none!important;" type="button">
+                           <i class="fa fa-search fa-fw"></i>
+                           </button>
+                           </span>
+                        </div>
+                     </form>
+                  </li>
+               </ul>
+            </div>
+         </nav>
+         <div id="filers-container" class="container-fluid collapse small-text" style="background-color: #1b1b1b; color: #fff">
+            <form>
+               <div class="row">
+                  <div class="col-sm-1"></div>
+                  <div class="col-sm-2">
+                     <div class="card filters-card">
+                        <div class="card-body filters-card-body">
+                           <div class="form-group">
+                              <label for="sel1">Marka:</label>
+                              <select class="form-control form-control-sm input-dark" id="sel1">
+                                 <option>1</option>
+                                 <option>22</option>
+                                 <option>3333</option>
+                                 <option>44444</option>
+                              </select>
+                           </div>
+                           <div class="form-group">
+                              <label for="sel3">Model:</label>
+                              <select class="form-control form-control-sm input-dark" id="sel3">
+                                 <option>1</option>
+                                 <option>2</option>
+                                 <option>3</option>
+                                 <option>4</option>
+                              </select>
+                           </div>
+                           <div class="form-group">
+                              <label for="sel2">Rocznik:</label>
+                              <select class="form-control form-control-sm input-dark" id="sel2">
+                                 <option>1</option>
+                                 <option>2</option>
+                                 <option>3</option>
+                                 <option>4</option>
+                                 <option>5</option>
+                              </select>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-sm-4">
+                     <div class="card filters-card">
+                        <div class="card-body filters-card-body">
+                           <span style="display: inline-block; margin-bottom: .5rem;">Cena:</span>
+                           <div style="display: flex; text-align: center; vertical-align: middle; align-items: center">
+                              <div class="form-group" style="display: flex; text-align: center; vertical-align: middle;align-items: center">
+                                 <label for="sel5" style="align-items: center; margin-bottom: 0; padding-right: 10px;">Od:</label>
+                                 <input class="form-control form-control-sm input-dark" id="sel5" type="text" placeholder="0">
+                              </div>
+                              <div class="form-group" style="display: flex; text-align: center; vertical-align: middle;align-items: center">
+                                 <label for="sel6" style="align-items: center; margin-bottom: 0;padding-left: 10px; padding-right: 10px;">Do:</label>
+                                 <input class="form-control form-control-sm input-dark" id="sel6" type="text" placeholder="100 000">
+                                 <span style="padding-left: 5px;">zł</span>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-sm-2">
+                     <div class="card filters-card">
+                        <div class="card-body filters-card-body">
+                           <div class="form-group">
+                              <label for="sel9">Maksymalny przebieg:</label>
+                              <div style="display: flex; text-align: center; vertical-align: middle; align-items: center">
+                                 <input type="text" class="form-control form-control-sm input-dark" id="sel9" style="display: flex; width: 80%">
+                                 <span style="padding-left: 5px; display: flex;">km</span>
+                              </div>
+                           </div>
+                           <div class="form-group">
+                              <label for="sel10">Typ:</label>
+                              <select class="form-control form-control-sm input-dark" id="sel10" style="width: 80%">
+                                 <option>1</option>
+                                 <option>2</option>
+                                 <option>3</option>
+                                 <option>4</option>
+                              </select>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-sm-2"></div>
+               </div>
+            </form>
+         </div>
+      </div>
+      <!-- Modal nowy pojazd-->
+      <div id="myModal" class="modal fade" role="dialog">
+         <div class="modal-dialog modal-dialog-centered">
+            <!-- Modal content-->
+            <div class="modal-content">
+               <div class="modal-header text-center" style="background-color: #ff9900">
+                  <h4 class="modal-title w-100 font-weight-bold">Nowy pojazd</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                  </button>
+               </div>
+               <div class="modal-body">
+                  <div class="container-fluid">
+                     <form method="POST" action="../../pojazdy/dodaj">
+                        <div class="form-group form-row">
+                           <label data-error="wrong" data-success="right" for="marka" class="col-sm-3">Marka</label>
+                           <div class="col-sm-9">
+                              <input type="text" id="marka" class="form-control form-control-sm validate">
+                           </div>
+                        </div>
+                        <div class="form-group form-row">
+                           <label data-error="wrong" data-success="right" for="model" class="col-sm-3">Model</label>
+                           <div class="col">
+                              <input type="text" id="model" class="form-control form-control-sm validate">
+                           </div>
+                        </div>
+                        <div class="form-group form-row">
+                           <label data-error="wrong" data-success="right" for="przebieg" class="col-sm-3">Przebieg</label>
+                           <div class="col-sm-9">
+                              <input type="text" id="przebieg" class="form-control form-control-sm validate">
+                           </div>
+                        </div>
+                        <div class="form-group form-row">
+                           <label data-error="wrong" data-success="right" for="data" class="col-sm-3">Przyjęty dnia</label>
+                           <div class="col">
+                              <input type="date" id="data" class="form-control form-control-sm validate">
+                           </div>
+                        </div>
+                        <div class="form-group form-row">
+                           <label data-error="wrong" data-success="right" for="cena" class="col-sm-3">Cena</label>
+                           <div class="col-sm-9">
+                              <input type="text" id="cena" class="form-control form-control-sm validate">
+                           </div>
+                        </div>
+                        <div class="form-group form-row">
+                           <label data-error="wrong" data-success="right" for="opis" class="col-sm-3">Opis</label>
+                           <div class="col">
+                              <textarea id="opis" rows="3" class="form-control form-control-sm validate"></textarea>
+                           </div>
+                        </div>
+                        <hr>
+                        <div class="form-group form-row justify-content-center align-items-center">
+                           <button type="submit" class="btn btn-green-submit align-items-center">Zapisz<i class="fa fa-paper-plane-o ml-1"></i></button>
+                        </div>
+                     </form>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- !Modal nowy pojazd -->
+      <section class="py-5 text-center" style="background-color: #f8f9fa; margin-bottom: 5em; position: relative;">
+         <div class="container">
+            <h1>Przeglądaj pojazdy</h1>
+            <p class="lead">Wpisz czego szukasz na pasku wyszukiwania. Dopasuj wyniki za pomocą filtrów.</p>
+            <div class="big-icon"><i class="fa fa-search-plus" aria-hidden="true"></i></div>
+         </div>
+      </section>
+      <!-- Biała lista pojazdów -->
+      <div class="container" style="width: 85%; max-width: 900px; margin-bottom: 5em;">
+         <?php if (isset($data['pojazdy'])) { ?>
+         <?php $wyniki = $data['pojazdy']; ?>
+         <?php foreach ($wyniki as $val) { ?>
+         <div class="row align-items-center row-eq-height">
+            <div class="col-xs-12 col-sm-3 col-md-3 fixed-height">
+               <a href="/pojazdy/detale/<?= $val['id'] ?>">
+               <img src="/views/pojazdy/img/top-gear.jpg" class="img-responsive img-box img-thumbnail fakeimg"> 
+               </a>
+            </div>
+            <div class="col-xs-12 col-sm-5 col-md-5 fixed-height">
+               <a href="/pojazdy/detale/<?= $val['id'] ?>" class="yellow-link">
+                  <h4 class="card-title"><?= $val['marka']; ?> <?= $val['model']; ?></h4>
+               </a>
+               <p class=""><?= $val['opis']; ?></p>
+               <h6 class=" mb-2 text-muted"><span><i class="fa fa-calendar" aria-hidden="true"></i> <?= $val['data']; ?> </span> 
+                  <span><i class="fa fa-dot-circle-o" aria-hidden="true"></i> <?= $val['przebieg']; ?>km</span>
+                  <span> <i class="fa fa-fire" aria-hidden="true"></i> <?= $val['paliwo']; ?> </span>
+               </h6>
+            </div>
+            <div class="col-xs-12 col-sm-3 col-md-3 fixed-height">
+               <h4><?= $val['cena']; ?>zł</h4>
+            </div>
+            <div class="col-xs-12 col-sm-1 col-md-1 fixed-height">
+               <a href="/pojazdy/detale/<?= $val['id'] ?>" class="btn btn-yellow-sell float-right">Detale <i class="fa fa-angle-right" aria-hidden="true"></i><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+            </div>
+         </div>
+         <hr>
+         <?php } ?>
+         <?php } else { ?>
+         <!-- kod gdy nie ma pojazdów -->
+         <?php } ?>
+      </div>
+      <!--Footer-->
+      <footer class="page-footer font-small pt-4 mt-4 car-item-body white-text">
+         <!--Footer Links-->
+         <div class="container text-center text-md-left">
+            <!-- Footer links -->
+            <div class="row text-center text-md-left mt-3 pb-3">
+               <!--First column-->
+               <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+                  <h6 class="text-uppercase mb-4 font-weight-bold">Analitycy</h6>
+                  <ul class="list-unstyled">
+                     <li>
+                        <a href="#!" class="white-link">***</a>
+                     </li>
+                     <li>
+                        <a href="#!" class="white-link">***</a>
+                     </li>
+                     <li>
+                        <a href="#!" class="white-link">***</a>
+                     </li>
+                  </ul>
+               </div>
+               <!--/.First column-->
+               <hr class="w-100 clearfix d-md-none">
+               <!--Second column-->
+               <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+                  <h6 class="text-uppercase mb-4 font-weight-bold">Backend</h6>
+                  <ul class="list-unstyled">
+                     <li>
+                        <a href="#!" class="white-link">***</a>
+                     </li>
+                     <li>
+                        <a href="#!" class="white-link">***</a>
+                     </li>
+                     <li>
+                        <a href="#!" class="white-link">***</a>
+                     </li>
+                  </ul>
+               </div>
+               <!--/.Second column-->
+               <hr class="w-100 clearfix d-md-none">
+               <!--Third column-->
+               <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+                  <h6 class="text-uppercase mb-4 font-weight-bold">Frontend</h6>
+                  <ul class="list-unstyled">
+                     <li>
+                        <a href="#!" class="white-link">Mateusz Malec</a>
+                     </li>
+                     <li>
+                        <a href="#!" class="white-link">***</a>
+                     </li>
+                  </ul>
+               </div>
+               <!--/.Third column-->
+               <hr class="w-100 clearfix d-md-none">
+               <!--Fourth column-->
+               <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+                  <h6 class="text-uppercase mb-4 font-weight-bold">Kierownik Projektu</h6>
+                  <ul class="list-unstyled">
+                     <li>
+                        <a href="#!" class="white-link">***</a>
+                     </li>
+                  </ul>
+               </div>
+               <!--/.Fourth column-->
+               <!--Fifth column-->
+               <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+                  <h6 class="text-uppercase mb-4 font-weight-bold">Testerzy</h6>
+                  <ul class="list-unstyled">
+                     <li>
+                        <a href="#!" class="white-link">***</a>
+                     </li>
+                     <li>
+                        <a href="#!" class="white-link">***</a>
+                     </li>
+                     <li>
+                        <a href="#!" class="white-link">***</a>
+                     </li>
+                  </ul>
+               </div>
+               <!--/.Fifth column-->
+               <!--Sixth column-->
+               <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+                  <h6 class="text-uppercase mb-4 font-weight-bold">Kontrola Jakości</h6>
+                  <ul class="list-unstyled">
+                     <li>
+                        <a href="#!" class="white-link">***</a>
+                     </li>
+                  </ul>
+               </div>
+               <!--/.Sixth column-->
+            </div>
+            <!-- Footer links -->
+         </div>
+         <!-- Copyright-->
+         <div class="footer-copyright py-3 text-center" style="background-color: #222">
+            © 2018 
+            <a href="#!" class="yellow-link">
+            <strong>***</strong>
+            </a>
+         </div>
+         <!--/.Copyright -->
+      </footer>
+      <!--/.Footer-->
+   </body>
+</html>
