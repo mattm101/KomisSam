@@ -1,12 +1,5 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: tppli
- * Date: 13.01.2018
- * Time: 14:13
- */
-
 require_once 'libs/Controller.php';
 
 class Pojazdy extends Controller {
@@ -132,43 +125,6 @@ class Pojazdy extends Controller {
     public function postDetaleWrapper(){
 
     }
-
-   /* public function detaleAction() {
-        $id = $_GET['id'];
-
-        $naglowki = array(
-            "Content-Type: application/json"
-        );
-
-        $curl = curl_init();
-        if (!$curl) {
-            exit(1);
-        }
-        $opcjeCurl = array(
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_CUSTOMREQUEST => "GET",
-            CURLOPT_HTTPHEADER => $naglowki,
-            CURLOPT_URL => "https://my-json-server.typicode.com/MateuszMalec101/fakePojazdy/pojazdy/$id",
-        );
-        if (!curl_setopt_array($curl, $opcjeCurl)) {
-            exit(2);
-        }
-        $wynik = curl_exec($curl);
-
-        if ($wynik === false) {
-            exit(3);
-        }
-
-        $wyniki = json_decode($wynik, true);
-
-
-        if(curl_getinfo($curl, CURLINFO_HTTP_CODE) == 200) {
-            $this->view->setRender('pojazdy/details', ["detale" => $wyniki]);
-        } else {
-            $this->view->setRender('pojazdy/details');
-        }
-    }
-    */
 
      public function detaleAction($id) {
 
