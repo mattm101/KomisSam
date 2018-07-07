@@ -5,6 +5,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="stylesheet" href="/views/pojazdy/css/style.css">
+      <link rel="stylesheet" href="/views/pojazdy/css/biker.css">
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -50,10 +51,10 @@
             </button>
             <div class="collapse navbar-collapse" id="collapsibleNavbar">
                <ul class="navbar-nav">
-                  <li class="nav-item menu-button-active">
+                  <li class="nav-item menu-button">
                      <a class="nav-link menu-link" href="../../pojazdy/">Pojazdy</a>
                   </li>
-                  <li class="nav-item menu-button">
+                  <li class="nav-item menu-button-active">
                      <a class="nav-link menu-link" href="../../raporty/">Raporty</a>
                   </li>
                   <li class="nav-item menu-button">
@@ -73,7 +74,7 @@
                               placeholder="Szukaj..." id="example-search-input">
                            <span class="input-group-append">
                            <button class="btn btn-outline-secondary border-left-0 border"
-                              style="background-color: #ff9900; outline: 0!important; border: none!important;" type="button">
+                              style="background-color: #ff9900; outline: 0!important; border: none!important;" type="button" id="full-th">
                            <i class="fa fa-search fa-fw"></i>
                            </button>
                            </span>
@@ -358,58 +359,48 @@
          </div>
       </div>
       <!-- !Modal nowy pojazd -->
-      <section class="py-5 text-center" style="background-color: #f8f9fa; margin-bottom: 5em; position: relative;">
-         <div class="container">
-            <h1>Przeglądaj pojazdy</h1>
-            <p class="lead">Wpisz czego szukasz na pasku wyszukiwania. Dopasuj wyniki za pomocą filtrów.</p>
-            <div class="big-icon"><i class="fa fa-search-plus" aria-hidden="true"></i></div>
-         </div>
-      </section>
-      <!-- Biała lista pojazdów -->
-      <div class="container" style="width: 85%; max-width: 1300px; margin-bottom: 5em;">
-         <?php if (isset($data['pojazdy'])) { ?>
-         <?php $wyniki = $data['pojazdy']; ?>
-         <?php foreach ($wyniki as $val) { ?>
-         <div class="row align-items-center row-eq-height">
-            <div class="col-xs-12 col-sm-3 col-md-3 fixed-height">
-               <a href="/pojazdy/detale/<?= $val['id'] ?>">
-               <img src="/views/pojazdy/img/top-gear.jpg" class="img-responsive img-box img-thumbnail fakeimg">
-               </a>
+      <div id="game-area" class="hidden">
+         <section class="py-5 text-center" style="background-color: #f8f9fa; margin-bottom: 5em; position: relative;">
+            <div class="container">
+               <h1>Full Throttle</h1>
+               <p class="lead">Skacz za pomocą ","</p>
+               <div class="big-icon"><i class="fa fa-tachometer" aria-hidden="true"></i></div>
             </div>
-            <div class="col-xs-12 col-sm-5 col-md-5 fixed-height">
-               <a href="/pojazdy/detale/<?= $val['id'] ?>" class="yellow-link">
-                  <h4
-                     class="card-title"><?= $val['brand']; ?> <?= $val['model']; ?></h4>
-               </a>
-               <h6 class=" mb-2 text-muted"><span><i class="fa fa-calendar"
-                  aria-hidden="true"></i> Data produkcji: <?= $val['productionYear']; ?>  </span>
-                  <span><i class="fa fa-route" aria-hidden="true"></i> Przebieg: <?= $val['mileage']; ?>
-                  km<br></span>
-                  <span> <i class="fa fa-fire" aria-hidden="true"></i> Liczba drzwi: <?= $val['doorsNumber']; ?> </span>
-                  <span> <i class="fa fa-street-view"
-                     aria-hidden="true"></i> Liczba siedzeń: <?= $val['seatsNumber']; ?> </span>
-                  <span> <i class="fa fa-fire" aria-hidden="true"></i> Kolor: <?= $val['color']; ?> <br></span>
-                  <span> <i class="fa fa-fire"
-                     aria-hidden="true"></i> Nr rejestracyjny: <?= $val['registrationNumber']; ?> </span>
-                  <span> <i class="fa fa-fire" aria-hidden="true"></i> VIN: <?= $val['vin']; ?> <br></span>
-                  <span> <i class="fa fa-info"
-                     aria-hidden="true"></i> Dodatkowy opis: <?= $val['additionalDescription']; ?> </span>
-               </h6>
-            </div>
-            <div class="col-xs-12 col-sm-3 col-md-3 fixed-height">
-               <h4><?= $val['price']; ?>zł</h4>
-            </div>
-            <div class="col-xs-12 col-sm-1 col-md-1 fixed-height">
-               <a href="/pojazdy/detale/<?= $val['id'] ?>" class="btn btn-yellow-sell float-right">Detale <i
-                  class="fa fa-angle-right" aria-hidden="true"></i><i class="fa fa-angle-right"
-                  aria-hidden="true"></i></a>
+         </section>
+         <!-- Biker -->
+         <div class="container" style="width: 85%; max-width: 1300px; margin-bottom: 5em; height: 400px;">
+            <div class="row game sliding-back" id="game-panel">
+               <div class="score-box">
+                  <h1 style="padding-left: 20px; font-family: Impact, Charcoal, sans-serif;">TESTOSTERON  <span id="score-value"></span>%</h1>
+               </div>
+               <img src="/views/raporty/img/krzak.png" class="plant" id="plant-img">
+               <img src="/views/raporty/img/idle.png" class="biker" id="biker-img">
             </div>
          </div>
-         <hr>
-         <?php } ?>
-         <?php } else { ?>
-         <!-- kod gdy nie ma pojazdów -->
-         <?php } ?>
+      </div>
+      <div class="container" style="width: 85%; max-width: 900px; margin-bottom: 5em; margin-top: 5em;">
+         <table class="table table-striped" style="width: 80%; margin: 0px auto !important;">
+            <thead>
+               <tr>
+                  <th style="padding-left: 2em">Raport</th>
+                  <th style="width: 30%; text-align: center;">Data wystawienia</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <td style="padding-left: 2em"><i class="fa fa-file-text" aria-hidden="true"></i> Raport 1</td>
+                  <td style="text-align: center;">2008-10-01</td>
+               </tr>
+               <tr>
+                  <td style="padding-left: 2em"><i class="fa fa-file-text" aria-hidden="true"></i> Raport 2</td>
+                  <td style="text-align: center;">2008-10-01</td>
+               </tr>
+               <tr>
+                  <td style="padding-left: 2em"><i class="fa fa-file-text" aria-hidden="true"></i> Raport 3</td>
+                  <td style="text-align: center;">2008-10-01</td>
+               </tr>
+            </tbody>
+         </table>
       </div>
       <!--Footer-->
       <footer class="page-footer font-small pt-4 mt-4 car-item-body white-text">
@@ -515,5 +506,68 @@
       </footer>
       <!--/.Footer-->
       <script src="/views/pojazdy/js/new-brand-model-dropdown.js"></script>
+      <script type="text/javascript">
+         var scoreVal = 0;
+         const $game = $('#game-panel');
+         const $biker = $('#biker-img');
+         const $plant = $('#plant-img');
+         const $score = $('#score-value');
+         const BIKER_IDLE = 0, BIKER_AIR = 1, BIKER_TIRED = 2, PLANT_OFF = 0, PLANT_ON = 1;
+         var bikerState = BIKER_IDLE;
+         var plantState = PLANT_OFF;
+         $(function() {//po załadowaniu okna
+            $('#full-th').on('click', showGame);
+            $score.text(scoreVal);
+            $(document).keypress(function(e) {
+               if(e.which == 44) {
+                  console.log('space pressed!');
+                  if(bikerState == BIKER_IDLE){
+                     $biker.addClass("biker-air");
+                     bikerState = BIKER_AIR;
+                     $biker.attr("src", "/views/raporty/img/duck.png");
+                     setTimeout(function(){
+                        $biker.removeClass("biker-air");
+                        bikerState = BIKER_TIRED;
+                        setTimeout(function(){
+                        $biker.removeClass("biker-air");
+                        bikerState = BIKER_IDLE;
+                        $biker.attr("src", "/views/raporty/img/idle.png");
+                        }, 200);
+                     }, 600);
+                  }
+               }
+            });
+            setInterval(plantLoop, 2000);
+         })
+         function showGame(){
+            if($('#search-bar').val() == "gra"){
+               $('#game-area').removeClass("hidden");
+               $('#game-area').addClass("visible");
+               scoreVal = 0;
+               $score.text(scoreVal);
+            }
+         }
+         function plantLoop(){
+            if(Math.floor((Math.random() * 2) + 1) == 1 && plantState == PLANT_OFF){
+               $plant.addClass("plant-roll");
+               plantState = PLANT_ON;
+               setTimeout(function(){
+                        if(bikerState == BIKER_AIR){
+                           console.log("UNIK!");
+                           scoreVal += 10;
+                        }else{
+                           console.log("OBERWAL!");
+                           scoreVal -= 10;
+                        }
+                        $score.text(scoreVal);
+                     }, 1000);
+               setTimeout(function(){
+                        $plant.removeClass("plant-roll");
+                        plantState = PLANT_OFF;
+                     }, 2000);
+            }
+         
+         }
+      </script>
    </body>
 </html>
