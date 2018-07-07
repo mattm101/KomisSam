@@ -1,11 +1,5 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: tppli
- * Date: 02.12.2017
- * Time: 14:49
- */
 class View
 {
     public function __construct() {
